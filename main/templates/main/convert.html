@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Convert
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+	<div class="column">
+		{% for file in upload_file %}
+			<p> {{ file.short_title }} </p>
+			<img src="{{ file.file.url }}">
+			<p> {{ file.timeStamp }} </p>
+
+		{% endfor %}
+		
+	</div>
+		
+</div>
+{% endblock %}

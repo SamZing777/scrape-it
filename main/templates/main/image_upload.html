@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Scraper
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+	<div class="column">
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_table }} <br/>
+			<input type="submit" value="Extract">
+		</form>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column">
+		{% for file in file_uploaded %}
+			<p> {{ file.short_title }}</p>
+			<img src="{{ file.file.url }}" />
+			<p> {{ file.timeStamp }} </p>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="row">
+	<div class="column">
+		<h2>Text and images extracted Below</h2>
+		<p>
+		</p>
+		<h5> Convert to: </h5>
+		<input type="button" name="" value="PDF"/>
+		<input type="button" name="" value="Text File"/>
+		<input type="button" name="" value=".docx (Microsoft Word File)"/>
+	</div>
+</div>
+
+{% endblock %}
